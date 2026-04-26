@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Tanvi ❤️</title>
+
+  <style>
+    body {
+      margin: 0;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background: black;
+      color: white;
+      overflow: hidden;
+    }
+
+    #lockScreen {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    #yes { background: green; color: white; }
+
+    #no {
+      background: red;
+      color: white;
+      position: absolute;
+    }
+
+    #loveMessage, #msg1, #msg2, #msg3 {
+      display: none;
+      margin-top: 15px;
+      padding: 10px;
+    }
+
+    #timer {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      animation: float 5s linear infinite;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-10vh); }
+    }
+  </style>
+
+</head>
+
+<body>
+
+<div id="lockScreen">
+  <h2>Enter Our Special Date 💖</h2>
+  <p>(DD/MM/YYYY)</p>
+  <input type="text" id="password" placeholder="08/07/2025">
+  <button onclick="checkPassword()">Unlock 🔓</button>
+  <p id="error" style="color:red;"></p>
+</div>
+
+<h1>K. Durga Prasad Reddy ❤️ G. Tanvi Reddy</h1>
+<p>Do you love me? 💖</p>
+
+<button id="yes" onclick="yesClicked()">Yes 💕</button> <button id="no" onmouseover="moveNo()">No 😜</button>
+
+<p id="loveMessage">I love you forever 💞</p>
+<p id="timer"></p>
+
+<p id="msg1">
+Sometimes I sit and think about how my life was before you, and honestly, it feels incomplete now. You didn’t just enter my life—you changed everything.
+</p>
+
+<p id="msg2">
+You are my comfort, my best friend, and my home. I promise to always stand by you.
+</p>
+
+<p id="msg3">
+You are my future, my forever, and the reason behind my smiles.
+</p>
+
+<audio id="music" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<script>
+function checkPassword() {
+  var input = document.getElementById("password").value;
+  if (input === "08/07/2025") {
+    document.getElementById("lockScreen").style.display = "none";
+  } else {
+    document.getElementById("error").innerText = "Wrong date 😜";
+  }
+}
+
+function yesClicked() {
+  document.getElementById("loveMessage").style.display = "block";
+  document.getElementById("msg1").style.display = "block";
+
+  setTimeout(function() {
+    document.getElementById("msg2").style.display = "block";
+  }, 3000);
+
+  setTimeout(function() {
+    document.getElementById("msg3").style.display = "block";
+  }, 6000);
+
+  document.getElementById("music").play();
+}
+
+function moveNo() {
+  var noBtn = document.getElementById("no");
+  noBtn.style.left = Math.random() * window.innerWidth + "px";
+  noBtn.style.top = Math.random() * window.innerHeight + "px";
+}
+
+var startDate = new Date("2025-07-08");
+
+setInterval(function() {
+  var now = new Date();
+  var diff = now - startDate;
+
+  var days = Math.floor(diff / (1000*60*60*24));
+  var hours = Math.floor((diff / (1000*60*60)) % 24);
+  var mins = Math.floor((diff / (1000*60)) % 60);
+
+  document.getElementById("timer").innerHTML =
+    "Together for " + days + " days, " + hours + " hours, " + mins + " minutes 💖";
+}, 1000);
+
+setInterval(function() {
+  var heart = document.createElement("div");
+  heart.innerHTML = "💖";
+  heart.classList.add("heart");
+  heart.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(heart);
+
+  setTimeout(function() {
+    heart.remove();
+  }, 5000);
+}, 300);
+</script>
+
+</body>
+</html>
